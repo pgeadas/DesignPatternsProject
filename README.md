@@ -1,0 +1,3 @@
+# DesignPatternsProject
+Simple space-shooter game made using Design Patterns in C++
+Add here the commands to play the game...
