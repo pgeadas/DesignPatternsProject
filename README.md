@@ -27,3 +27,4 @@ Simple space-shooter game made using Design Patterns written in C++/CLI.
 "C": change the color of the spaceship
 
 "L": change te detail level of the game (Simple, Detailed, Double View)
+--- (Visitor Pattern)
