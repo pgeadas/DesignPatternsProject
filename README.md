@@ -1,5 +1,10 @@
-####################################### DesignPatternsProject
+####################################### DesignPatternsProject (Software Reuse)
 Simple space-shooter game made using Design Patterns written in C++/CLI.
+#
+This poject was developed while completing my Master's. 
+#
+Authors: Pedro Geadas
+#
 
 ### Commands to play the game
 "D" or "Right": rotate right
