@@ -5,7 +5,7 @@ This poject was developed while completing my Master's Degree at University of C
 #
 Authors: Pedro Geadas
 #
-######################################### .exe
+######################################## .exe file
 In the folder "Release", the .exe of the game can be found: "ProjectoNEW.exe".
 #
 
