@@ -15,9 +15,11 @@ public:
 ref class RegularFactory : public Factory{	
 public:
 	RegularFactory(){}
+
 	virtual Bullet^ createBulletObject(){
 		return gcnew Bullet();
 	}
+
 	virtual SpaceShip^ createSpaceShipObject(){
 		return gcnew SpaceShip();
 	}
@@ -29,10 +31,11 @@ public:
 	virtual Resource^ createResourceObject(){
 		return gcnew Resource();
 	}
+
 	virtual HumanPlayer^ createHumanPlayer(){
 		return gcnew HumanPlayer();
-
 	}
+
 	virtual CPUPlayer^ createCPUPlayer(){
 		return gcnew CPUPlayer();
 	}
@@ -42,9 +45,11 @@ public:
 ref class BigFactory : public Factory {
 public:
 	BigFactory(){}
+
 	virtual Bullet^ createBulletObject(){
 		return gcnew BigBullet();
 	}
+
 	virtual SpaceShip^ createSpaceShipObject(){
 		return gcnew BigSpaceShip();
 	}
@@ -52,16 +57,17 @@ public:
 	virtual EnemySpaceShip^ createEnemySpaceShipObject(){
 		return gcnew BigEnemySpaceShip();
 	}
+
 	virtual Resource^ createResourceObject(){
 		return gcnew BigResource();
 	}
+
 	virtual HumanPlayer^ createHumanPlayer(){
 		return gcnew BigHumanPlayer();
-
 	}
+
 	virtual CPUPlayer^ createCPUPlayer(){
 		return gcnew BigCPUPlayer();
-		
 	}
 };
 

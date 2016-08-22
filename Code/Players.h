@@ -1,8 +1,9 @@
-
-
 ref class PlayerContext;
 interface class Visitor;
 ref class ViewVisitor;
+
+/*The Update methods here could be eventually more optimised. However, the game engine was not the main focus of this project,
+and the vast majority of the time was used to think and implement the software design patterns here used.*/
 
 ref class HumanPlayer: public Player, public ResourceObserver{
 public:
@@ -11,15 +12,12 @@ public:
 	virtual void Accept(Visitor^ v) override {v->VisitPlayer(this);}
 
 	virtual void Update(ResourceSubject^ s){
-
 		Resource^ res = static_cast<Resource^>(s);
 		Bullet^ b;
-		double h;
-		double cO;
-		double cA;
-		cO = pow((this->getSpaceShip()->getCenter().X- res->getCenter().X +res->getSize()/2 ),2);
-		cA = pow((this->getSpaceShip()->getCenter().Y- res->getCenter().Y +res->getSize()/2 ),2);
-		h = sqrt(cO+cA);
+
+		double cO = pow((this->getSpaceShip()->getCenter().X- res->getCenter().X +res->getSize()/2 ),2);
+		double cA = pow((this->getSpaceShip()->getCenter().Y- res->getCenter().Y +res->getSize()/2 ),2);
+		double h = sqrt(cO+cA);
 
 		//colisions of spaceship with resources
 		if( (h - (this->getSpaceShip()->getSize()/2) - res->getSize()/2) <=3)
@@ -38,11 +36,8 @@ public:
 			if(h - (res->getSize()/2) - b->getSize()/2 <= 2){	
 				b->setOnScreen(false);
 				static_cast<Resource^>(res)->setHit(true);
-				
 			}	
-		
 		}
-
 	}
 };
 
@@ -56,7 +51,6 @@ public:
 	virtual void Accept(Visitor^ v) override {v->VisitPlayer(this);}
 	
 	virtual void Update(ResourceSubject^ s){
-
 		Resource^ res = static_cast<Resource^>(s);
 		Bullet^ b;
 
@@ -84,9 +78,7 @@ public:
 				b->setOnScreen(false);
 				static_cast<Resource^>(res)->setHit(true);
 			}	
-		
 		}
-
 	}
 
 	virtual void Update(Subject^ s){
@@ -107,9 +99,7 @@ public:
 			cO = pow( (human->getSpaceShip()->getX() +human->getSpaceShip()->getSize()/2 - b->getX() ),2);
 			cA = pow((human->getSpaceShip()->getY() +human->getSpaceShip()->getSize()/2 - b->getY() ),2);
 			h = sqrt(cO+cA);
-
 			if(h - (human->getSpaceShip()->getSize()/2) - b->getSize()/2 <= 3){
-				
 				if(human->getShield()>0){
 					human->decShield(25);
 				}else{
@@ -117,13 +107,11 @@ public:
 				}
 				b->setOnScreen(false); 
 			}	
-		
 		}
 
 
 		//guided bullet
 		if(human->getSpaceShip()->getGB()->isOnScreen()){ //if bullet is not fired, skip the math
-			
 			cO = pow((this->getSpaceShip()->getCenter().X+this->getSpaceShip()->getSize()/2-human->getSpaceShip()->getGB()->getX()),2);
 			cA = pow((this->getSpaceShip()->getCenter().Y+this->getSpaceShip()->getSize()/2-human->getSpaceShip()->getGB()->getY()),2);
 			h = sqrt(cO+cA);
@@ -132,14 +120,11 @@ public:
 				H_MIN = h;
 				cO = this->getSpaceShip()->getCenter().X+this->getSpaceShip()->getSize()/2-human->getSpaceShip()->getGB()->getX();
 				cA = this->getSpaceShip()->getCenter().Y+this->getSpaceShip()->getSize()/2-human->getSpaceShip()->getGB()->getY();
-
 				human->getSpaceShip()->getGB()->addX((cO*this->getSpaceShip()->getVelocity()*2/h));//h/cA
 				human->getSpaceShip()->getGB()->addY((cA*this->getSpaceShip()->getVelocity()*2/h));//h/cO
-				
 			}
 
 			H_MIN+=20;
-
 
 			if(h - (this->getSpaceShip()->getSize()/2) - human->getSpaceShip()->getGB()->getSize()/2 <=1){
 				H_MIN=9999999;
@@ -169,7 +154,6 @@ public:
 				this->setEnergy(this->getEnergy()-20); 
 			}
 
-
 			if(human->getShield()>0){
 				human->decShield(50);
 			}else{
@@ -194,7 +178,6 @@ public:
 					human->getSpaceShip()->setGrades(-130 + rand()%20);
 				}
 			}
-
 		}
 
 		//player bullets with enemy spaceships colisions
@@ -210,12 +193,9 @@ public:
 					this->decShield(50);
 				}else{
 					this->setEnergy(this->getEnergy()-40);
-					
 				}
 				b->setOnScreen(false); 
-				
 			}	
-		
 		}
 
 
@@ -234,10 +214,7 @@ public:
 			this->getSpaceShip()->setHit(true);
 			this->getSpaceShip()->setVelocity(3);
 			human->addScore(1);
-			
 		}
-
-
 	}
 };
 
@@ -245,10 +222,7 @@ public:
 ref class BigCPUPlayer : public CPUPlayer{
 public:
 	BigCPUPlayer(){}
-
 };
-
-
 
 ref class BigHumanPlayer : public HumanPlayer{
 public:

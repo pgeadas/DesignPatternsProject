@@ -1,17 +1,13 @@
 #pragma once
-
-
 ref class Bullet: public MobileObject{
 	private:
 		bool onScreen;
-
 	public:
 		Bullet();
 		Bullet(int);
 		void setOnScreen(bool);
 		bool isOnScreen();
 		void updatePos();
-
 		virtual void Accept(Visitor^ v) override {v->VisitBullet(this);}
 };
 
@@ -36,7 +32,6 @@ void Bullet::updatePos(){
 	this->setPos(this->getX()+(cos(this->getRadians())*this->getVelocity()),this->getY()+(sin(this->getRadians())*this->getVelocity()));
 }
 
-
 void Bullet::setOnScreen(bool b){
 	this->onScreen = b;
 }
@@ -47,14 +42,12 @@ bool Bullet::isOnScreen(){
 
 
 ref class GuidedBullet : public Bullet{
-public:
-	GuidedBullet();
-	void updatePos(double, double);
-	void updatePos();
-	virtual void Accept(Visitor^ v) override {v->VisitGuidedBullet(this);}
-
-
-};
+	public:
+		GuidedBullet();
+		void updatePos(double, double);
+		void updatePos();
+		virtual void Accept(Visitor^ v) override {v->VisitGuidedBullet(this);}
+	};
 
 GuidedBullet::GuidedBullet(){
 	this->setSize(10);
@@ -64,7 +57,6 @@ GuidedBullet::GuidedBullet(){
 	this->setOnScreen(false);
 
 }
-
 
 void GuidedBullet::updatePos(double x, double y){
 	//update position
@@ -77,7 +69,6 @@ void GuidedBullet::updatePos(){
 	this->setPos(this->getX()+(cos(this->getRadians())*this->getVelocity()),this->getY()+(sin(this->getRadians())*this->getVelocity()));
 }
 
-
 ref class BigBullet : public Bullet{
 public:
 	BigBullet();
@@ -85,5 +76,4 @@ public:
 
 BigBullet::BigBullet(){
 	this->setSize(20);
-
 }

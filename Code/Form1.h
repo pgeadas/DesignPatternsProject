@@ -334,7 +334,7 @@ private: System::Void On_Resize(System::Object^  sender, System::EventArgs^  e) 
 					cpu->getSpaceShip()->setClientR(this->ClientRectangle);
 				}
 			 }
-			 //aqui set da velocidade
+			 //TODO: Change game velocity based on screen size here
 		 }
 
 private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {

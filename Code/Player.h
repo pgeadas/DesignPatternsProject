@@ -1,5 +1,4 @@
 #pragma once
-
 interface class Factory;
 interface class State;
 ref class PlayerContext;
@@ -7,9 +6,8 @@ ref class ViewVisitor;
 
 ref class Player : public Subject
 {
-
 	private:
-		State^ actualState; //set as NotHot at the very beginning
+		State^ actualState; //set as NotHit at the very beginning
 		SpaceShip^ playerSpaceShip;
 		PlayerContext^ context;
 		Factory^ factory;

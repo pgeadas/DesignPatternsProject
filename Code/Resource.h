@@ -2,11 +2,11 @@ ref class Resource : public MobileObject {
 	private:
 		bool hit;
 
-public:
-	Resource();
-	void setHit(bool);
-	bool getHit();
-	virtual void Accept(Visitor^ v) override { v->VisitResource(this);}
+	public:
+		Resource();
+		void setHit(bool);
+		bool getHit();
+		virtual void Accept(Visitor^ v) override { v->VisitResource(this);}
 };
 
 void Resource::setHit(bool b){
@@ -28,7 +28,6 @@ Resource::Resource(){
 ref class BigResource : public Resource {
 public:
 	BigResource();
-
 };
 
 
