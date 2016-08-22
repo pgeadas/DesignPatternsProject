@@ -11,9 +11,7 @@ interface class State{
 ref class PlayerShoot : public State{
 public:
 	PlayerShoot(){}
-	virtual void drawState(Player^ p){
-	}
-
+	virtual void drawState(Player^ p){}
 	virtual void changeState(Player^ p, State^ s){}
 };
 
@@ -21,7 +19,6 @@ ref class PlayerNotShoot : public State{
 public:
 	PlayerNotShoot(){}
 	virtual void drawState(Player^ p){}
-
 	virtual void changeState(Player^ p, State^ s){}
 };
 

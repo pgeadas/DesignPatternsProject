@@ -9,7 +9,6 @@ ref class DrawSmallExplosionAlgorithm : public Strategy {
 public:
 	DrawSmallExplosionAlgorithm(){}
 	virtual void Draw(MobileObject^ mo, Graphics^ g){
-		
 		g->DrawEllipse(Pens::Yellow, mo->GetQuarterFrame());
 		g->DrawEllipse(Pens::Red, mo->GetHalfFrame());
 		g->DrawEllipse(Pens::Yellow, mo->GetDoubleFrame());
@@ -18,7 +17,6 @@ public:
 		g->DrawEllipse(Pens::Yellow, mo->GetHalfFrame());
 		g->DrawEllipse(Pens::Red, mo->GetQuarterFrame());
 	}
-
 };
 
 ref class DrawBigExplosionAlgorithm : public Strategy {
@@ -45,7 +43,6 @@ public:
 
 		g->DrawEllipse(Pens::Red, mo->GetDoubleFrame());
 	}
-
 };
 
 
@@ -75,36 +72,36 @@ ref class DrawRedEllipseAlgorithm : public Strategy {
 private:
 	int count;
 public:
-		DrawRedEllipseAlgorithm(){count=0;}
-		virtual void Draw(MobileObject^ mo, Graphics^ g){
-			g->DrawEllipse(Pens::Red, mo->GetFrame());
+	DrawRedEllipseAlgorithm(){count=0;}
+	virtual void Draw(MobileObject^ mo, Graphics^ g){
+		g->DrawEllipse(Pens::Red, mo->GetFrame());
 	}
 };
 
 ref class DrawGreenEllipseAlgorithm : public Strategy {
 	
 public:
-		DrawGreenEllipseAlgorithm(){}
-		virtual void Draw(MobileObject^ mo, Graphics^ g){
-			g->DrawEllipse(Pens::Green, mo->GetFrame());
+	DrawGreenEllipseAlgorithm(){}
+	virtual void Draw(MobileObject^ mo, Graphics^ g){
+		g->DrawEllipse(Pens::Green, mo->GetFrame());
 	}
 };
 
 ref class DrawOrangeEllipseAlgorithm : public Strategy {
 	
 public:
-		DrawOrangeEllipseAlgorithm(){}
-		virtual void Draw(MobileObject^ mo, Graphics^ g){
-			g->DrawEllipse(Pens::Orange, mo->GetFrame());
+	DrawOrangeEllipseAlgorithm(){}
+	virtual void Draw(MobileObject^ mo, Graphics^ g){
+		g->DrawEllipse(Pens::Orange, mo->GetFrame());
 	}
 };
 
 ref class DrawRedRectangleAlgorithm : public Strategy {
 	
 public:
-		DrawRedRectangleAlgorithm(){}
-		virtual void Draw(MobileObject^ mo, Graphics^ g){
-			g->DrawRectangle(Pens::Red,mo->GetFrame());
+	DrawRedRectangleAlgorithm(){}
+	virtual void Draw(MobileObject^ mo, Graphics^ g){
+		g->DrawRectangle(Pens::Red,mo->GetFrame());
 	}
 };
 

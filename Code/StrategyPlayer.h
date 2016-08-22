@@ -23,7 +23,6 @@ public:
 		g->DrawRectangle(Pens::Green,r.Width-210,r.Height-200,200,20);
 		g->FillRectangle(Brushes::Green,r.Width-210,r.Height-200,p->getEnergy(),20);
 
-
 		point = PointF(r.Width-290,r.Height-160-2);
 		g->DrawString("Lifes",f,Brushes::Blue,point);
 
@@ -37,17 +36,12 @@ public:
 
 		g->DrawRectangle(Pens::Brown,r.Width-210,r.Height-120,200,20);
 		g->FillRectangle(Brushes::Brown,r.Width-210,r.Height-120,p->getShield(),20);
-
-
 		
 		point = PointF(r.Width-290,r.Height-70-2);
 		g->DrawString("Score",f,Brushes::AntiqueWhite,point);
 
-
 		g->DrawRectangle(Pens::Green,r.Width-210,r.Height-70-2,p->getScore(),20);
 		g->FillRectangle(Brushes::Green,r.Width-210,r.Height-70-2,p->getScore(),20);
-
-		
 	}
 };
 
@@ -66,12 +60,10 @@ public:
 		point = PointF(r.Width-150,r.Height-200-2);
 		g->DrawString(p->getEnergy().ToString(),f,Brushes::Green,point);
 
-
 		point = PointF(r.Width-290,r.Height-160-2);
 		g->DrawString("Lifes",f,Brushes::Blue,point);
 		point = PointF(r.Width-150,r.Height-160-2);
 		g->DrawString(p->getLifes().ToString(),f,Brushes::Blue,point);
-		
 		
 		point = PointF(r.Width-290,r.Height-120-2);
 		g->DrawString("Shield",f,Brushes::Brown,point);
@@ -79,13 +71,11 @@ public:
 		point = PointF(r.Width-150,r.Height-120-2);
 		g->DrawString(p->getShield().ToString(),f,Brushes::Brown,point);
 
-
 		point = PointF(r.Width-290,r.Height-70-2);
 		g->DrawString("Score",f,Brushes::AntiqueWhite,point);
 
 		point = PointF(r.Width-150,r.Height-70-2);
 		g->DrawString(p->getScore().ToString(),f,Brushes::AntiqueWhite,point);
-		
 	}
 };
 
@@ -103,7 +93,6 @@ public:
 		point = PointF(p->getSpaceShip()->getX()-5,p->getSpaceShip()->getY()-10);
 
 		g->DrawString(p->getShield().ToString(),f,Brushes::Brown,point);
-
 	}
 };
 

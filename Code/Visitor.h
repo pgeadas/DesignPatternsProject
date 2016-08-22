@@ -5,7 +5,7 @@ ref class Context;
 public:
 	virtual void VisitPlayer(Player^)=0;
 };
-//due to circular dependencies, its declared in "Resource Observer" 
+//due to circular dependencies, its declared in "ResourceObserver.h" 
 */
 
 
@@ -200,7 +200,6 @@ ref class SimpleVisitor : public VisitorCommonFuncs, public Visitor{
 	}
 
 	virtual void VisitPlayer(Player^ p){
-	
 		p->getContext()->DrawStrategy(p,this->g,p->getClientR());
 	}
 
@@ -235,10 +234,8 @@ ref class SimpleVisitor : public VisitorCommonFuncs, public Visitor{
 			this->SpaceShipScreen(s,s->getClientR());
 
 			if(!s->getHit()){	
-
 				 s->getContext()->DrawStrategy(s,g);
-
-			 }else{
+			}else{
 				this->aux = s->getContext()->getStrategy();
 				s->getContext()->setContext(Explosion);
 				s->getContext()->DrawStrategy(s,this->g);
@@ -260,7 +257,6 @@ ref class SimpleVisitor : public VisitorCommonFuncs, public Visitor{
 
 		//update position
 		bul->setPos(bul->getX()+(cos(bul->getRadians())*BULLET_VELOCITY),bul->getY()+(sin(bul->getRadians())*BULLET_VELOCITY));
-
 	}
 
 	virtual void VisitTrail(Trail^ t){}
@@ -308,7 +304,6 @@ ref class DoubleViewVisitor : public VisitorCommonFuncs, public Visitor{
 	}
 
 	virtual void VisitResource(Resource^ r){
-		
 		Rectangle *rect = new Rectangle(0,0,r->getClientR().Width/2,r->getClientR().Height);
 		Rectangle *rect2 = new Rectangle(r->getClientR().Width/2,0,r->getClientR().Width,r->getClientR().Height);
 		
@@ -321,7 +316,6 @@ ref class DoubleViewVisitor : public VisitorCommonFuncs, public Visitor{
 	}
 
 	virtual void VisitSpaceShip(SpaceShip^ s){
-
 		Rectangle *rect = new Rectangle(0,0,s->getClientR().Width/2,s->getClientR().Height);
 		Rectangle *rect2 = new Rectangle(s->getClientR().Width/2,0,s->getClientR().Width,s->getClientR().Height);
 
@@ -348,7 +342,6 @@ ref class DoubleViewVisitor : public VisitorCommonFuncs, public Visitor{
 		bul->Accept(this->detailedV);
 		//update position
 		bul->setPos(-bul->getClientR().Width/2+bul->getX(),bul->getY());
-
 	}
 
 	virtual void VisitTrail(Trail^ t){
@@ -357,14 +350,11 @@ ref class DoubleViewVisitor : public VisitorCommonFuncs, public Visitor{
 			t = static_cast<Trail^>(this->getTrails()[count%this->getTrailSize()]);
 			t->refreshPos(this->getX()+(this->getSize()/2)-(t->getSize()/2),this->getY()+(this->getSize()/2)-(t->getSize()/2));
 			
-			
 			for(int i=0;i<this->getTrailSize();i++){
 				if(i%2==0 || i%3==0 || i%5==0){
 					t = static_cast<Trail^>(this->getTrails()[i]);
 					t->refreshPos(this->getX()+(this->getSize()/2)-(t->getSize()/2),this->getY()+(this->getSize()/2)-(t->getSize()/2));
-			
 				}
-			
 			}
 			
 			this->count++;
@@ -373,17 +363,16 @@ ref class DoubleViewVisitor : public VisitorCommonFuncs, public Visitor{
 
 		virtual void VisitGuidedBullet(GuidedBullet^ gb){
 			Rectangle *rect = new Rectangle(0,0,gb->getClientR().Width/2,gb->getClientR().Height);
-		Rectangle *rect2 = new Rectangle(gb->getClientR().Width/2,0,gb->getClientR().Width,gb->getClientR().Height);
+			Rectangle *rect2 = new Rectangle(gb->getClientR().Width/2,0,gb->getClientR().Width,gb->getClientR().Height);
 
-		gb->setClientR(*rect);
-		gb->Accept(this->simpleV);
-		//check if the bullet is on the screen
-		gb->setClientR(*rect2);
-		//update position
-		gb->setPos(gb->getClientR().Width/2+gb->getX(),gb->getY());
-		gb->Accept(this->detailedV);
-		//update position
-		gb->setPos(-gb->getClientR().Width/2+gb->getX(),gb->getY());
-	}
-
+			gb->setClientR(*rect);
+			gb->Accept(this->simpleV);
+			//check if the bullet is on the screen
+			gb->setClientR(*rect2);
+			//update position
+			gb->setPos(gb->getClientR().Width/2+gb->getX(),gb->getY());
+			gb->Accept(this->detailedV);
+			//update position
+			gb->setPos(-gb->getClientR().Width/2+gb->getX(),gb->getY());
+		}
 };

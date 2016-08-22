@@ -18,12 +18,10 @@ public:
 
 };
 
-
 void Trail::refreshPos(double x, double y){
 	this->c.X=x;
 	this->c.Y=y;
 }
-
 
 int Trail::getSize(){
 	return this->size;
@@ -40,10 +38,8 @@ PointF Trail::getCenter(){
 
 }
 
-
 ref class  MobileObject : public ResourceSubject
 {
-	
 	private:
 		int size;  
 		int velocity; 
@@ -93,7 +89,6 @@ ref class  MobileObject : public ResourceSubject
 		void addX(double);
 		void addY(double);
 		virtual void Accept(Visitor^){}
-
 };
 
 void MobileObject::addX(double x){
@@ -130,7 +125,6 @@ void MobileObject::setContext(Context^ c){
 Context^ MobileObject::getContext(){
 	return this->context;
 }
-
 
 void MobileObject::drawTrails(Visitor^ v){
 	
@@ -172,7 +166,6 @@ int MobileObject::getTrailSize(){
 void MobileObject::setTrailSize(unsigned trail){
 	this->trailSize = trail;
 }
-
 
 double MobileObject::getRadians(){
 	return this->getGrades()*PI/180;
@@ -222,7 +215,6 @@ void MobileObject::setY(double y)
 {
 	this->center.Y = y;
 }
-
 
 int MobileObject::getSize()
 {
