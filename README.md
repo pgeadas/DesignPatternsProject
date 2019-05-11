@@ -1,13 +1,12 @@
-####################################### DesignPatternsProject (Software Reuse)
+## DesignPatternsProject (Software Reuse)
 Simple space-shooter game made using Design Patterns written in C++/CLI.
-#
+
 This poject was developed while completing my Master's Degree at University of Coimbra, Portugal.
-#
-Authors: Pedro Geadas
-#
-######################################## .exe file
+
+#### Authors: Pedro Geadas
+
+### .exe file
 In the folder "Release", the .exe of the game can be found: "ProjectoNEW.exe".
-#
 
 ### Commands to play the game
 "D" or "Right": rotate right
